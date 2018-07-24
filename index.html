@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Class06 - JavaScript 2 - week 2</title>
+
+    <!-- css style -->
+    <link rel="icon"
+          href="http://d1ujqdpfgkvqfi.cloudfront.net/favicon-generator/htdocs/favicons/2014-12-30/fa52c00d67e7e2adf827c34a4cfcce28.ico">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="topContent">
+
+    <header id="main-header" class="bg-success text-white p-3 mb-3 bxShadow">
+        <div class="container">
+
+            <div class="media">
+                <i id="logo" class="ti-settings animated bounceInLeft"></i>
+                <div class="media-body">
+                    <h1 class="animated bounce delay-2s">HOMEWORK</h1>
+                    <div class="animated bounceInUp delay-4s">Class06 - JavaScript 2 - week 2</div>
+
+                </div>
+            </div>
+
+
+        </div>
+    </header>
+
+    <div class="container">
+
+        <!-- card with button and form -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card bxShadow">
+
+                    <div class="card-body">
+
+                        <div class="row">
+                            <div class="col-lg-6">
+
+                                <!-- button 1 -->
+                                <a href="#" id="myButton" class="btn btn-block btn-primary ripple">
+                                    <i class="ti-bookmark-alt"></i><br> HackYourFuture Repositories</a>
+
+                            </div>
+                            <div class="col-lg-6">
+
+                                <!-- input text with button 2 -->
+
+
+                                <form id="searchForm">
+                                    <label id="searchLabel" for="key">Search for a repositories</label>
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" placeholder="Search Term"
+                                               value="react" id="key" name="key" aria-describedby="basic-addon3">
+                                        <div class="input-group-append">
+                                            <button type="submit" class="btn btn-primary ripple"
+                                                    id="searchButton"><i class="ti-search"></i> Search
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- loading progress bar -->
+        <div id="itemsLoading" class="row mt-3">
+            <div class="col-lg-12">
+                <div class="card-body bxShadow container pt-4 pb-4">
+                    <div class="cssload-loader">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- json response items -->
+        <div class="row">
+            <div class="col-lg-12">
+                <table id="dataTable" class="table table-hover mt-3 bxShadow">
+                    <thead>
+                    <tr>
+                        <th><i class="ti-menu"></i> ID</th>
+                        <th><i class="ti-link"></i> URL</th>
+                        <th><i class="ti-pencil-alt"></i> Description</th>
+                    </tr>
+                    </thead>
+                    <tbody id="reposTbody">
+                    <!-- ajax content goes here... -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- commits cards -->
+        <div class="row mt-3 pb-3" id="commitsCards">
+
+            <div class="col-lg-12">
+                <div id="repositoryCardNav" class="card text-white bg-secondary mb-3 bxShadow">
+                    <div class="card-body">
+                        <h5 class="card-title">Info card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-12" id="commitsDiv">
+
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+
+<footer>
+    <div id="footerCard" class="card text-white bg-dark rounded-0 mt-3">
+
+        <div class="card-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h5 class="card-title">Created by: Zuhair Taha</h5>
+                        <p class="card-text">
+                            <button type="button" class="btn ripple btn-default btn-circle"><i class="ti-github"></i>
+                            </button>
+                            <button type="button" class="btn ripple btn-primary btn-circle"><i class="ti-facebook"></i>
+                            </button>
+                            <button type="button" class="btn ripple btn-success btn-circle"><i class="ti-linkedin"></i>
+                            </button>
+                            <button type="button" class="btn ripple btn-info btn-circle"><i class="ti-twitter-alt"></i>
+                            </button>
+                            <button type="button" class="btn ripple btn-warning btn-circle"><i class="ti-google"></i>
+                            </button>
+                            <button type="button" class="btn ripple btn-danger btn-circle"><i class="ti-youtube"></i>
+                            </button>
+                        </p>
+                    </div>
+                    <div class="col-md-4 center">
+                        <a title="go to top" id="goToTop" href="#main-header"><i class="ti-angle-up"></i></a>
+                    </div>
+                    <div class="col-md-4">
+                        <h4>Homework</h4>
+                        <p>Class06 - JavaScript 2 - week 2</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-header">
+            <div class="container center">Aall right received 2018</div>
+        </div>
+    </div>
+</footer>
+
+<!-- external JavaScript file -->
+<script src="app.js"></script>
+
+</body>
+
+</html>
