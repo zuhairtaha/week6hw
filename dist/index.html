@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- css style -->
+    <link rel="icon" href="http://d1ujqdpfgkvqfi.cloudfront.net/favicon-generator/htdocs/favicons/2014-12-30/fa52c00d67e7e2adf827c34a4cfcce28.ico">
+
+    <title>Class06 - JavaScript 2 - week 2</title>
+
+    <link rel="stylesheet" href="/style.a946ece1.css">
+
+<script src="/style.a946ece1.js"></script></head>
+<body>
+
+<div class="topContent">
+
+    <header id="main-header" class="bg-success text-white p-3 mb-3 bxShadow">
+        <div class="container">
+
+            <a href="/index.html" class="media header-button">
+                <i id="logo" class="ti-settings animated bounceInLeft"></i>
+                <div class="media-body">
+                    <h1 class="animated bounce delay-2s">HOMEWORK</h1>
+                    <div class="animated bounceInUp delay-4s">Class06 - JavaScript 2 - week 2</div>
+
+                </div>
+            </a>
+
+
+        </div>
+    </header>
+
+    <div class="container">
+
+        <!-- card with button and form -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card bxShadow">
+
+                    <div class="card-body">
+
+                        <div class="row">
+                            <div class="col-lg-6">
+
+
+                                <!-- Main button -->
+                                <div class="btn-group btn-block">
+
+                                    <button id="showRepositoriesButton" type="button" data-type="all" class="btn btn-block btn-primary ripple get-repositories">
+                                        <i class="ti-bookmark-alt"></i><br> HackYourFuture Repositories
+                                    </button>
+
+                                    <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+
+                                    <div class="dropdown-menu sortButtons">
+                                        <a class="dropdown-item get-repositories" data-type="mostForked" href="#">
+                                            <i class="fas fa-code-branch"></i>
+                                            <sup>
+                                                <span class="badge badge-light">
+                                                <i class="ti-arrow-up"></i>
+                                            </span>
+                                            </sup>
+                                            The most forked repositories
+                                        </a>
+                                        <a class="dropdown-item get-repositories" data-type="leastForked" href="#">
+                                            <i class="fas fa-code-branch"></i>
+                                            <sup>
+                                                <span class="badge badge-light">
+                                                <i class="ti-arrow-down"></i>
+                                            </span>
+                                            </sup>
+                                            The least forked repositories
+                                        </a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item get-repositories" data-type="mostWatched" href="#">
+                                            <i class="far fa-eye"></i>
+                                            <sup>
+                                                <span class="badge badge-light">
+                                                <i class="ti-arrow-up"></i>
+                                            </span>
+                                            </sup>
+                                            The most watched repositories
+                                        </a>
+                                        <a class="dropdown-item get-repositories" data-type="leastWatched" href="#">
+                                            <i class="far fa-eye"></i>
+                                            <sup>
+                                                <span class="badge badge-light">
+                                                <i class="ti-arrow-down"></i>
+                                            </span>
+                                            </sup>
+                                            The least watched repositories
+                                        </a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item get-repositories" data-type="totalForks" href="#" data-toggle="modal" data-target="#totalForksModal">
+                                            <i class="ti-github"></i>
+                                            The total number of forks for all repos
+                                        </a>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="col-lg-6">
+
+                                <!-- input text with button 2 -->
+
+
+                                <form id="searchForm">
+                                    <label id="searchLabel" for="key">Search for a repository</label>
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" placeholder="Search Term" value="javascript" id="key" name="key" aria-describedby="basic-addon3">
+                                        <div class="input-group-append">
+                                            <button type="submit" class="btn btn-primary ripple" id="searchButton"><i class="ti-search"></i> Search
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- json response items -->
+        <div class="row">
+            <div class="col-lg-12">
+
+                <table id="dataTable" class="table table-hover mt-3 bxShadow">
+                    <thead>
+                    <tr>
+                        <th><i class="ti-menu"></i></th>
+                        <th id="thRepo"><i class="fab fa-github-alt"></i> Repository</th>
+                        <th><i class="fas fa-user-friends"></i> Contributors</th>
+                        <th><img id="commit-icon" src="/Git-commit.3050d338.png"> Commits</th>
+                        <th><i class="fas fa-code-branch"></i> Forks</th>
+                        <th><i class="far fa-eye"></i> Watchers</th>
+                    </tr>
+                    </thead>
+                    <tbody id="reposTbody">
+                    <!-- ajax content goes here... -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- commits cards -->
+        <div class="row mt-3 pb-3" id="commitsCards">
+
+            <div class="col-lg-12">
+                <div id="repositoryCardNav" class="card text-white bg-secondary mb-3 bxShadow">
+                    <div class="card-body">
+                        <h5 class="card-title"></h5>
+                        <p class="card-text"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-12" id="commitsDiv">
+
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+
+<footer>
+    <div id="footerCard" class="card text-white bg-dark rounded-0 mt-3">
+
+        <div class="card-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h5 class="card-title">Created by: Zuhair Taha</h5>
+                        <p class="card-text">
+                            <a target="_blank" href="https://github.com/zuhairtaha" class="btn ripple btn-light btn-circle"><i class="ti-github"></i></a>
+                            <a target="_blank" href="https://facebook.com/zuhairtaha" class="btn ripple btn-primary btn-circle"><i class="ti-facebook"></i></a>
+                            <a target="_blank" href="http://linkedin.com/zuhairtaha" class="btn ripple btn-success btn-circle"><i class="ti-linkedin"></i></a>
+                            <a target="_blank" href="#" class="btn ripple btn-info btn-circle"><i class="ti-twitter-alt"></i></a>
+                            <a target="_blank" href="#" class="btn ripple btn-warning btn-circle"><i class="ti-google"></i></a>
+                            <a target="_blank" href="http://youtube.com/zuhairtaha" class="btn ripple btn-danger btn-circle"><i class="ti-youtube"></i></a>
+                        </p>
+                    </div>
+                    <div class="col-md-4 center">
+                        <a title="go to top" id="goToTop" href="#main-header"><i class="ti-angle-up"></i></a>
+                    </div>
+                    <div class="col-md-4">
+
+                        <p>Homework question:
+                            <a target="_blank" class="footer-link" href="https://github.com/HackYourFuture-CPH/JavaScript/blob/master/JavaScript2/Week6/homework.md">link1</a>
+                            <a target="_blank" class="footer-link" href="https://github.com/HackYourFuture-CPH/JavaScript/blob/master/JavaScript3/Week7/MAKEME.md#step-2-continuing-with-the-previous-exercise">link2</a>
+
+                        </p>
+                        <p>
+                            <a class="footer-link" href="https://zuhairtaha.github.io/hyf-javascript3/">my homework
+                                index</a>
+                            <a class="footer-link" href="https://github.com/zuhairtaha/week6hw">code</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</footer>
+
+
+<!-- Total Number of Repositories Modal -->
+<div class="modal fade" id="totalForksModal" tabindex="-1" role="dialog" aria-labelledby="totalForksModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="totalForksModalLabel"><i class="ti-github"></i> Total repos</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                The total number of forks for all repos
+                <h2 id="totalReposCount">00</h2>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.assets, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+<script src="/app.10a031b5.js"></script>
+
+</body>
+</html>
